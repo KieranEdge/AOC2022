@@ -1,0 +1,17 @@
+# Build objects
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.log
+*.cache
+*.dll
+*.pdb
+*.exe
+*.nupkg
+*.snupkg
+.idea/
+
+#Local Data
+Data/
