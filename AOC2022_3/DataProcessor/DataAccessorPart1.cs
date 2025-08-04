@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOC2022_3.DataProcessor
 {
-    public static class DataAccessor
+    public static class DataAccessorPart1
     {
         public static List<List<string>> TextFileToListofSplitStrings(string filePath)
         {

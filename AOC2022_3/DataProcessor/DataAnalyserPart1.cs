@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOC2022_3.DataProcessor
 {
-    public static class DataAnalyser
+    public static class DataAnalyserPart1
     {
         public static int FindSharedCharacter(string firstPart, string secondPart)
         {
