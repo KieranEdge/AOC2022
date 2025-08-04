@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2022_1", "AOC2022\AOC2022_1.csproj", "{B72A9046-4089-4C2A-B724-CD8DD355F3FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2022_2", "AOC2022_2\AOC2022_2.csproj", "{267830F2-F42E-4459-BC5F-61DF3C72D27A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B72A9046-4089-4C2A-B724-CD8DD355F3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B72A9046-4089-4C2A-B724-CD8DD355F3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B72A9046-4089-4C2A-B724-CD8DD355F3FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267830F2-F42E-4459-BC5F-61DF3C72D27A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267830F2-F42E-4459-BC5F-61DF3C72D27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267830F2-F42E-4459-BC5F-61DF3C72D27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267830F2-F42E-4459-BC5F-61DF3C72D27A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

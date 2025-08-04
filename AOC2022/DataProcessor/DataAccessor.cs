@@ -41,7 +41,8 @@ namespace AOC2022_1.DataProcessor
 
             sr.Close();
 
-            Console.WriteLine(resultsList.Max());
+            var topThree = resultsList.OrderByDescending(n => n).Take(3).ToList();
+            Console.WriteLine(topThree.Sum());
 
         }
     }
