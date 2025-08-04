@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AOC2022_2.DataProcessor
 {
-    public static class DataAccessor
+    public static class DataAccessor_Part1
     {
         public static List<List<string>> DataSeparator(string filePath)
         {
