@@ -12,6 +12,8 @@ int colEnd = integersArray.GetLength(1);
 Console.WriteLine($"The array has dimensions on {rowEnd} x {colEnd}");
 int visibleTrees = 0;
 
+List<int> scenicScores = new List<int>();
+
 for (int row = 0; row < rowEnd; row++)
 {
     for (int col = 0; col < colEnd; col++)
@@ -20,6 +22,7 @@ for (int row = 0; row < rowEnd; row++)
         int[] currentCol = RowColumnExtractor.GetColumn(integersArray, col);
 
         bool isVisible = VisibilityCalculator.IsTreeVisible(currentRow, currentCol, row, col);
+        scenicScores.Add(ScenicScore.CalculateScenecity(currentRow, currentCol, row, col));
 
         if (isVisible)
         {
@@ -28,4 +31,5 @@ for (int row = 0; row < rowEnd; row++)
     }
 }
 
-Console.WriteLine(visibleTrees);
+Console.WriteLine($"The number of visible trees from the edges: {visibleTrees}");
+Console.WriteLine($"The most scenic spot has a score of: {scenicScores.Max()}");
