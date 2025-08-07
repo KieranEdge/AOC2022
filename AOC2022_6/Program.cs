@@ -4,7 +4,6 @@ string filePath = "C:\\Users\\Kieran Edge\\source\\repos\\AOC2022\\AOC2022_6\\Da
 
 char[] charactersInFile = Data_Accessor.TextFileToCharacterArray(filePath);
 
-Console.WriteLine(charactersInFile[0]);
 List<char> recentCharacters = new List<char>();
 int processingInt = 0;
 bool stopProcessing = false;
@@ -22,7 +21,7 @@ while (!stopProcessing)
     {
         // Adding the new character
         recentCharacters.Add(charactersInFile[processingInt]);
-        if (recentCharacters.Count == 4)
+        if (recentCharacters.Count == 14)
         {
             break;
         }
