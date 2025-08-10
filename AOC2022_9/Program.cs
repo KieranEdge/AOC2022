@@ -2,7 +2,7 @@
 using AOC2022_9.MoveProcessor;
 
 List<char> directionsList = new List<char>();
-List<int> movesList  = new List<int>();
+List<int> movesList = new List<int>();
 string filePath = "C:\\Users\\Kieran Edge\\source\\repos\\AOC2022\\AOC2022_9\\Data\\Data.txt";
 
 (directionsList, movesList) = DataAccessor.fileToDirectionsAndMoves(filePath);
@@ -10,39 +10,45 @@ string filePath = "C:\\Users\\Kieran Edge\\source\\repos\\AOC2022\\AOC2022_9\\Da
 List<List<int>> headMoves = new List<List<int>>();
 List<List<int>> tailMoves = new List<List<int>>();
 
-List<int> headPosition = new List<int>() { 0, 0 };
-List<int> tailPosition = new List<int>() { 0, 0 };
-var uniqueTailPositions = new HashSet<(int, int)>();
 int ropeLength = 10;
-var rope = new List<(int x, int y)>();
-for (int i = 0; i < ropeLength; i++)
-    rope.Add((0, 0));  // start at origin
+var rope = new List<List<int>>();
 
-var visitedPositions = new HashSet<(int, int)>();
-visitedPositions.Add(rope[ropeLength - 1]); // starting position
+// Initialize rope knots at origin (0,0)
+for (int k = 0; k < ropeLength; k++)
+{
+    rope.Add(new List<int>() { 0, 0 });
+}
+
+var uniqueLastKnotPositions = new HashSet<(int, int)>();
+
+// Add starting position of last knot
+uniqueLastKnotPositions.Add((rope[ropeLength - 1][0], rope[ropeLength - 1][1]));
 
 for (int i = 0; i < directionsList.Count; i++)
 {
-    int steps = movesList[i];
-    for (int step = 0; step < steps; step++)
-    {
-        // Move head
-        var head = rope[0];
-        if (directionsList[i] == 'U') head.y++;
-        else if (directionsList[i] == 'D') head.y--;
-        else if (directionsList[i] == 'L') head.x--;
-        else if (directionsList[i] == 'R') head.x++;
-        rope[0] = head;
+    int numberOfSteps = movesList[i];
 
-        // Move other knots
+    for (int j = 0; j < numberOfSteps; j++)
+    {
+        // Move head (rope[0])
+        if (directionsList[i] == 'U') rope[0][1]++;
+        else if (directionsList[i] == 'D') rope[0][1]--;
+        else if (directionsList[i] == 'R') rope[0][0]++;
+        else if (directionsList[i] == 'L') rope[0][0]--;
+
+        // Move each subsequent knot following the knot before it
         for (int k = 1; k < ropeLength; k++)
         {
             rope[k] = MoveProcessor.TailPositionMapper(rope[k - 1], rope[k]);
         }
 
-        // Track last knot position
-        visitedPositions.Add(rope[ropeLength - 1]);
+        // Track last knot’s position
+        uniqueLastKnotPositions.Add((rope[ropeLength - 1][0], rope[ropeLength - 1][1]));
+
+        // Optional: track all knot moves if needed
+        // headMoves.Add(new List<int>(rope[0]));
+        // tailMoves.Add(new List<int>(rope[ropeLength - 1]));
     }
 }
 
-Console.WriteLine($"Unique positions visited by last knot: {visitedPositions.Count}");
+Console.WriteLine($"Unique positions visited by last knot: {uniqueLastKnotPositions.Count}");
