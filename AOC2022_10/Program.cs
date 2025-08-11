@@ -10,6 +10,9 @@ List<int> valueAtCycle = new List<int>();
 
 (instructions, values) = DataSeparator.LinesToInstructionsAndIntegers(filePath);
 
+int[] spritePosition = new int[] { 0, 2 };
+string[] rowOutputs = new string[6];
+
 for (int i = 0; i < instructions.Count; i++)
 {
     valueAtCycle.Add(totalValue);
@@ -20,12 +23,19 @@ for (int i = 0; i < instructions.Count; i++)
     }
 }
 
-int cycle20 = valueAtCycle[19] * 20;
-int cycle60 = valueAtCycle[59] * 60;
-int cycle100 = valueAtCycle[99] * 100;
-int cycle140 = valueAtCycle[139] * 140;
-int cycle180 = valueAtCycle[179] * 180;
-int cycle220 = valueAtCycle[219] * 220;
+for (int i = 1; i <= 240; i++)
+{
+    int horizontalPos = (i - 1) % 40;
+    spritePosition[0] = valueAtCycle[i - 1] - 1;
+    spritePosition[1] = valueAtCycle[i - 1] + 1;
 
-int cycleSum = cycle20 + cycle60 + cycle100 + cycle140 + cycle180 + cycle220;
-Console.WriteLine(cycleSum);
+    string crtCharacter = (horizontalPos >= spritePosition[0] && horizontalPos <= spritePosition[1])
+        ? "#" : ".";
+
+    rowOutputs[(i - 1) / 40] += crtCharacter;
+}
+
+foreach (string row in rowOutputs)
+{
+    Console.WriteLine(row);
+}
