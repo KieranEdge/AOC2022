@@ -11,6 +11,10 @@ namespace AOC2022_11.DataProcessor
     {
         public int Id { get; set; }
         public List<int> StartingItems { get; set; }
+        
+        public int WorryFactor { get; set; }
+        
+        public bool isSquare {  get; set; }
         public char Operation { get; set; }
         public int TestDivisibleBy { get; set; }
         public int IfTrueThrowTo { get; set; }
@@ -25,6 +29,18 @@ namespace AOC2022_11.DataProcessor
                 .Split(',')
                 .Select(s => int.Parse(s.Trim()))
                 .ToList();
+
+            if (monkeyBlock[2].Split(" ")[7] == "old")
+            {
+                isSquare = true;
+                WorryFactor = 0;
+            }
+            else
+            {
+                isSquare = false;
+                WorryFactor = int.Parse(monkeyBlock[2].Split(" ")[7]);
+            }
+            
 
             Operation = monkeyBlock[2].Split(' ')[6][0];
 
